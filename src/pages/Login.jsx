@@ -4,6 +4,7 @@ import { supabase } from '../lib/supabase';
 import { useAuth } from '../lib/AuthContext';
 import { useLang } from '../i18n/LanguageContext';
 import LanguageSwitcher from '../components/LanguageSwitcher';
+import Logo from '../components/Logo';
 
 export default function Login() {
   const { t } = useLang();
@@ -39,7 +40,7 @@ export default function Login() {
   return (
     <div className="center-screen">
       <div className="card auth-card">
-        <div className="brand">🐹 {t('app.name')}</div>
+        <div className="brand"><Logo /></div>
         <LanguageSwitcher />
         <h1>{t('login.title')}</h1>
         <form onSubmit={handleSubmit}>

@@ -4,6 +4,7 @@ import { supabase } from '../lib/supabase';
 import { useLang } from '../i18n/LanguageContext';
 import LanguageSwitcher from '../components/LanguageSwitcher';
 import PasswordForm from '../components/PasswordForm';
+import Logo from '../components/Logo';
 
 export default function ResetPassword() {
   const { t } = useLang();
@@ -28,7 +29,7 @@ export default function ResetPassword() {
   return (
     <div className="center-screen">
       <div className="card auth-card">
-        <div className="brand">🐹 {t('app.name')}</div>
+        <div className="brand"><Logo /></div>
         <LanguageSwitcher />
         <h1>{t('password.title')}</h1>
         {ready ? (

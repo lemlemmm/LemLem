@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
 import { useLang } from '../i18n/LanguageContext';
 import LanguageSwitcher from '../components/LanguageSwitcher';
+import Logo from '../components/Logo';
 
 export default function ForgotPassword() {
   const { t } = useLang();
@@ -23,7 +24,7 @@ export default function ForgotPassword() {
   return (
     <div className="center-screen">
       <div className="card auth-card">
-        <div className="brand">🐹 {t('app.name')}</div>
+        <div className="brand"><Logo /></div>
         <LanguageSwitcher />
         <h1>{t('forgot.title')}</h1>
         {sent ? (

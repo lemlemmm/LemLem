@@ -4,6 +4,7 @@ import { useAuth } from '../lib/AuthContext';
 import { useLang } from '../i18n/LanguageContext';
 import { teacherNav, studentNav } from '../lib/nav';
 import Mascot from '../mascot/Mascot';
+import Logo from './Logo';
 
 export default function Layout({ role }) {
   const { profile, signOut } = useAuth();
