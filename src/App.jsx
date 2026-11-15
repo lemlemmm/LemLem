@@ -31,6 +31,11 @@ import { teacherNav, studentNav } from './lib/nav';
 import Tests from './pages/teacher/Tests';
 import TestDetail from './pages/teacher/TestDetail';
 import TestSubmission from './pages/teacher/TestSubmission';
+import StudentTests from './pages/student/StudentTests';
+import TestTake from './pages/student/TestTake';
+import Notifications from './pages/Notifications';
+import Messages from './pages/teacher/Messages';
+import StudentMessages from './pages/student/StudentMessages';
 
 function HomeRedirect() {
   const { profile } = useAuth();
@@ -71,7 +76,10 @@ export default function App() {
         <Route path="tests" element={<Tests />} />
         <Route path="tests/:id" element={<TestDetail />} />
         <Route path="tests/:id/submissions/:studentId" element={<TestSubmission />} />
-        {placeholders(teacherNav, ['groups', 'students', 'schedule', 'lessons', 'attendance', 'payments', 'homework', 'tests'])}      </Route>
+        <Route path="messages" element={<Messages />} />
+        <Route path="messages/:studentId" element={<Messages />} />
+        <Route path="notifications" element={<Notifications />} />
+        {placeholders(teacherNav, ['groups', 'students', 'schedule', 'lessons', 'attendance', 'payments', 'homework', 'tests', 'messages'])}      </Route>
 
       <Route path="/student" element={<ProtectedRoute role="student"><Layout role="student" /></ProtectedRoute>}>
         <Route index element={<Dashboard role="student" />} />
@@ -82,8 +90,11 @@ export default function App() {
         <Route path="payments" element={<MyPayments />} />
         <Route path="homework" element={<StudentHomework />} />
         <Route path="homework/:id" element={<HomeworkDo />} />
-        {placeholders(studentNav, ['schedule', 'lessons', 'payments', 'homework'])}
-      </Route>
+        <Route path="tests" element={<StudentTests />} />
+        <Route path="tests/:id" element={<TestTake />} />
+        <Route path="messages" element={<StudentMessages />} />
+        <Route path="notifications" element={<Notifications />} />
+        {placeholders(studentNav, ['schedule', 'lessons', 'payments', 'homework', 'tests', 'messages'])}      </Route>
 
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

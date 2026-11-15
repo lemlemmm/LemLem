@@ -6,6 +6,7 @@ import App from './App.jsx';
 import { AuthProvider } from './lib/AuthContext.jsx';
 import { LanguageProvider } from './i18n/LanguageContext.jsx';
 import { MascotProvider } from './mascot/MascotContext.jsx';
+import { NotifyProvider } from './notify/NotifyContext.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -13,7 +14,9 @@ createRoot(document.getElementById('root')).render(
       <AuthProvider>
         <LanguageProvider>
           <MascotProvider>
-            <App />
+            <NotifyProvider>
+              <App />
+            </NotifyProvider>
           </MascotProvider>
         </LanguageProvider>
       </AuthProvider>

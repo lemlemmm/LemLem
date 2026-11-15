@@ -124,6 +124,20 @@ export default function StudentPayments() {
     load();
   }
 
+    async function sendReminder() {
+    setError(''); setMsg('');
+    const debt = packages.reduce((sum, b) => sum + Number(b.outstanding_debt), 0);
+    const { error: err } = await supabase.from('notifications').insert({
+      user_id: id,
+      type: 'payment_reminder',
+      title: 'Payment reminder',
+      link: '/student/payments',
+      data: { amount: debt },
+    });
+    if (err) return setError(err.message);
+    setMsg(t('notif.reminded'));
+  }
+
   if (loading) return <p className="muted">{t('common.loading')}</p>;
 
   const pkgSelect = (value, onChange) =>
@@ -145,6 +159,13 @@ export default function StudentPayments() {
       </p>
       {error && <div className="error">{error}</div>}
       {msg && <div className="success">{msg}</div>}
+            {packages.reduce((sum, b) => sum + Number(b.outstanding_debt), 0) > 0 && (
+        <p>
+          <button className="btn btn-light btn-auto btn-small" onClick={sendReminder}>
+            🔔 {t('notif.remind')}
+          </button>
+        </p>
+      )}
 
       <h2>{t('pay.package')}</h2>
       {active ? (

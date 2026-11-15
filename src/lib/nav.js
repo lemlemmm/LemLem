@@ -5,5 +5,5 @@ export const teacherNav = [
 ];
 
 export const studentNav = [
-  'dashboard', 'schedule', 'lessons', 'homework', 'payments', 'settings',
+  'dashboard', 'schedule', 'lessons', 'homework', 'tests', 'messages', 'payments', 'settings',
 ];

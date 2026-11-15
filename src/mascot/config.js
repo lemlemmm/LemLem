@@ -50,6 +50,8 @@ export const REACTIONS = {
   wrong: { state: 'encouraging', msg: 'mascot.m4' },
   lessonDone: { state: 'celebrating', msg: 'mascot.m3' },
   newMaterials: { state: 'excited', msg: 'mascot.m5' },
+  newMessage: { state: 'excited', msg: 'mascot.newMessage' },
+  newNotice: { state: 'curious', msg: 'mascot.newNotice' },
 };
 
 export const CLICK_MESSAGES = [
