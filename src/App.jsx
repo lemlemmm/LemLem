@@ -28,6 +28,9 @@ import StudentHomework from './pages/student/StudentHomework';
 import HomeworkDo from './pages/student/HomeworkDo';
 import { useAuth } from './lib/AuthContext';
 import { teacherNav, studentNav } from './lib/nav';
+import Tests from './pages/teacher/Tests';
+import TestDetail from './pages/teacher/TestDetail';
+import TestSubmission from './pages/teacher/TestSubmission';
 
 function HomeRedirect() {
   const { profile } = useAuth();
@@ -65,8 +68,10 @@ export default function App() {
         <Route path="homework" element={<Homework />} />
         <Route path="homework/:id" element={<HomeworkDetail />} />
         <Route path="homework/:id/submissions/:studentId" element={<HomeworkSubmission />} />
-        {placeholders(teacherNav, ['groups', 'students', 'schedule', 'lessons', 'attendance', 'payments', 'homework'])}
-      </Route>
+        <Route path="tests" element={<Tests />} />
+        <Route path="tests/:id" element={<TestDetail />} />
+        <Route path="tests/:id/submissions/:studentId" element={<TestSubmission />} />
+        {placeholders(teacherNav, ['groups', 'students', 'schedule', 'lessons', 'attendance', 'payments', 'homework', 'tests'])}      </Route>
 
       <Route path="/student" element={<ProtectedRoute role="student"><Layout role="student" /></ProtectedRoute>}>
         <Route index element={<Dashboard role="student" />} />

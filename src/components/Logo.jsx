@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useLang } from '../i18n/LanguageContext';
 
-const SOURCES = ['/mascot/logo.png', '/mascot/idle.png'];
+const SOURCES = ['/mascot/idle.png'];
 
 export default function Logo() {
   const { t } = useLang();

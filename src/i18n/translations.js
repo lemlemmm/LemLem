@@ -4,6 +4,8 @@ import { part5 } from './part5';
 import { part6 } from './part6';
 import { part7 } from './part7';
 import { part8 } from './part8';
+import { part9 } from './part9';
+import { part10 } from './part10';
 export const LANGS = [
   { code: 'en', label: 'English' },
   { code: 'ru', label: 'Русский' },
@@ -155,6 +157,6 @@ export const translations = {
     'dashboard.studentIntro': 'Мұнда сабақтарыңыз, тапсырмаларыңыз және жетістіктеріңіз болады.',
   },
 };
-[part3, part4, part5, part6, part7, part8].forEach((part) => {
+[part3, part4, part5, part6, part7, part8, part9, part10].forEach((part) => {
   Object.keys(part).forEach((code) => Object.assign(translations[code], part[code]));
 });
