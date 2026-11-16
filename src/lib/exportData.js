@@ -91,7 +91,7 @@ const EXPORTS = {
 
 export async function exportCsv(kind) {
   const rows = await EXPORTS[kind]();
-  downloadCsv(`aisha-apai-${kind}-${today()}.csv`, rows);
+  downloadCsv(`lemlem-${kind}-${today()}.csv`, rows);
 }
 
 export const EXPORT_KINDS = Object.keys(EXPORTS);

@@ -18,7 +18,7 @@ export const LANGS = [
 
 export const translations = {
   en: {
-    'app.name': 'Aisha Apai',
+    'app.name': 'LemLem',
     'common.loading': 'Loading…',
     'common.comingSoon': 'This section will be built in the next parts.',
     'login.title': 'Welcome',
@@ -66,7 +66,7 @@ export const translations = {
   },
 
   ru: {
-    'app.name': 'Aisha Apai',
+    'app.name': 'LemLem',
     'common.loading': 'Загрузка…',
     'common.comingSoon': 'Этот раздел появится в следующих частях.',
     'login.title': 'Добро пожаловать',
@@ -114,7 +114,7 @@ export const translations = {
   },
 
   kk: {
-    'app.name': 'Aisha Apai',
+    'app.name': 'LemLem',
     'common.loading': 'Жүктелуде…',
     'common.comingSoon': 'Бұл бөлім келесі бөлімдерде жасалады.',
     'login.title': 'Қош келдіңіз',
