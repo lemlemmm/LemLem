@@ -40,6 +40,8 @@ import SelfStudyLesson from './pages/student/SelfStudyLesson';
 import MyProgress from './pages/student/MyProgress';
 import { useAuth } from './lib/AuthContext';
 import { teacherNav, studentNav } from './lib/nav';
+import Materials from './pages/teacher/Materials';
+import StudentMaterials from './pages/student/StudentMaterials';
 
 function HomeRedirect() {
   const { profile } = useAuth();
@@ -85,9 +87,10 @@ export default function App() {
         <Route path="progress" element={<Progress />} />
         <Route path="progress/:studentId" element={<Progress />} />
         <Route path="notifications" element={<Notifications />} />
+        <Route path="materials" element={<Materials />} />
         {placeholders(teacherNav, [
           'groups', 'students', 'schedule', 'lessons', 'attendance', 'payments',
-          'homework', 'tests', 'messages', 'progress',
+          'homework', 'tests', 'messages', 'progress', 'materials',
         ])}
       </Route>
 
@@ -107,8 +110,9 @@ export default function App() {
         <Route path="selfstudy/:id" element={<SelfStudyLesson />} />
         <Route path="progress" element={<MyProgress />} />
         <Route path="notifications" element={<Notifications />} />
+        <Route path="materials" element={<StudentMaterials />} />
         {placeholders(studentNav, [
-          'schedule', 'lessons', 'payments', 'homework', 'tests', 'messages', 'selfstudy', 'progress',
+          'schedule', 'lessons', 'payments', 'homework', 'tests', 'messages', 'selfstudy', 'progress', 'materials',
         ])}
       </Route>
 
