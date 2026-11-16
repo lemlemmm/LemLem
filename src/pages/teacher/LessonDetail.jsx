@@ -6,6 +6,7 @@ import { toLocalInput } from '../../lib/dates';
 import StatusBadge from '../../components/StatusBadge';
 import JoinButton from '../../components/JoinButton';
 import LessonMaterialItem from '../../components/LessonMaterialItem';
+import SelfStudyPanel from '../../components/SelfStudyPanel';
 
 const KINDS = ['vocabulary', 'grammar', 'reading', 'exercise', 'listening', 'speaking', 'writing', 'notes'];
 const URL_OK = /^https?:\/\//i;
@@ -124,6 +125,7 @@ export default function LessonDetail() {
     if (!window.confirm(t('mat.confirmDelete'))) return;
     if (m.file_path) await supabase.storage.from('materials').remove([m.file_path]);
     await supabase.from('lesson_materials').delete().eq('id', m.id);
+    if (m.material_id) await supabase.from('materials').delete().eq('id', m.material_id);
     load();
   }
 
@@ -207,7 +209,7 @@ export default function LessonDetail() {
           <button className="btn btn-danger btn-auto" onClick={deleteLesson}>{t('lesson.delete')}</button>
         </div>
       </div>
-
+      <SelfStudyPanel lessonId={id} groupId={form.group_id} />
       <h2>{t('mat.title')}</h2>
       {materials.length === 0 && <p className="muted">{t('mat.empty')}</p>}
       {materials.map((m) => <LessonMaterialItem key={m.id} m={m} onDelete={deleteMaterial} />)}

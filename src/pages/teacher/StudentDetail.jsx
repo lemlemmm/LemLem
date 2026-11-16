@@ -96,7 +96,11 @@ export default function StudentDetail() {
           {t('students.payments')}
         </Link>
             </p>
-
+      <p>
+        <Link className="btn btn-light btn-auto btn-small" to={`/teacher/progress/${id}`}>
+          {t('nav.progress')}
+        </Link>
+      </p>
       <div className="card">
         <div className="grid-2">
           <div>

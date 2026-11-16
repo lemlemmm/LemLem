@@ -8,6 +8,7 @@ import ChangePassword from './pages/ChangePassword';
 import Dashboard from './pages/Dashboard';
 import Settings from './pages/Settings';
 import ComingSoon from './pages/ComingSoon';
+import Notifications from './pages/Notifications';
 import Groups from './pages/teacher/Groups';
 import Students from './pages/teacher/Students';
 import StudentDetail from './pages/teacher/StudentDetail';
@@ -20,22 +21,25 @@ import StudentPayments from './pages/teacher/StudentPayments';
 import Homework from './pages/teacher/Homework';
 import HomeworkDetail from './pages/teacher/HomeworkDetail';
 import HomeworkSubmission from './pages/teacher/HomeworkSubmission';
+import Tests from './pages/teacher/Tests';
+import TestDetail from './pages/teacher/TestDetail';
+import TestSubmission from './pages/teacher/TestSubmission';
+import Messages from './pages/teacher/Messages';
+import Progress from './pages/teacher/Progress';
 import StudentSchedule from './pages/student/StudentSchedule';
 import StudentLessons from './pages/student/StudentLessons';
 import StudentLessonView from './pages/student/StudentLessonView';
 import MyPayments from './pages/student/MyPayments';
 import StudentHomework from './pages/student/StudentHomework';
 import HomeworkDo from './pages/student/HomeworkDo';
-import { useAuth } from './lib/AuthContext';
-import { teacherNav, studentNav } from './lib/nav';
-import Tests from './pages/teacher/Tests';
-import TestDetail from './pages/teacher/TestDetail';
-import TestSubmission from './pages/teacher/TestSubmission';
 import StudentTests from './pages/student/StudentTests';
 import TestTake from './pages/student/TestTake';
-import Notifications from './pages/Notifications';
-import Messages from './pages/teacher/Messages';
 import StudentMessages from './pages/student/StudentMessages';
+import StudentSelfStudy from './pages/student/StudentSelfStudy';
+import SelfStudyLesson from './pages/student/SelfStudyLesson';
+import MyProgress from './pages/student/MyProgress';
+import { useAuth } from './lib/AuthContext';
+import { teacherNav, studentNav } from './lib/nav';
 
 function HomeRedirect() {
   const { profile } = useAuth();
@@ -78,8 +82,14 @@ export default function App() {
         <Route path="tests/:id/submissions/:studentId" element={<TestSubmission />} />
         <Route path="messages" element={<Messages />} />
         <Route path="messages/:studentId" element={<Messages />} />
+        <Route path="progress" element={<Progress />} />
+        <Route path="progress/:studentId" element={<Progress />} />
         <Route path="notifications" element={<Notifications />} />
-        {placeholders(teacherNav, ['groups', 'students', 'schedule', 'lessons', 'attendance', 'payments', 'homework', 'tests', 'messages'])}      </Route>
+        {placeholders(teacherNav, [
+          'groups', 'students', 'schedule', 'lessons', 'attendance', 'payments',
+          'homework', 'tests', 'messages', 'progress',
+        ])}
+      </Route>
 
       <Route path="/student" element={<ProtectedRoute role="student"><Layout role="student" /></ProtectedRoute>}>
         <Route index element={<Dashboard role="student" />} />
@@ -93,8 +103,14 @@ export default function App() {
         <Route path="tests" element={<StudentTests />} />
         <Route path="tests/:id" element={<TestTake />} />
         <Route path="messages" element={<StudentMessages />} />
+        <Route path="selfstudy" element={<StudentSelfStudy />} />
+        <Route path="selfstudy/:id" element={<SelfStudyLesson />} />
+        <Route path="progress" element={<MyProgress />} />
         <Route path="notifications" element={<Notifications />} />
-        {placeholders(studentNav, ['schedule', 'lessons', 'payments', 'homework', 'tests', 'messages'])}      </Route>
+        {placeholders(studentNav, [
+          'schedule', 'lessons', 'payments', 'homework', 'tests', 'messages', 'selfstudy', 'progress',
+        ])}
+      </Route>
 
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

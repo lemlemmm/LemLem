@@ -49,7 +49,9 @@ export const REACTIONS = {
   correct: { state: 'celebrating', msg: 'mascot.m3' },
   wrong: { state: 'encouraging', msg: 'mascot.m4' },
   lessonDone: { state: 'celebrating', msg: 'mascot.m3' },
-  newMaterials: { state: 'excited', msg: 'mascot.m5' },
+  newMaterials: { state: 'excited', msg: 'mascot.newMaterials' },
+  newHomework: { state: 'excited', msg: 'mascot.newHomework' },
+  welcomeBack: { state: 'excited', msg: 'mascot.welcomeBack' },
   newMessage: { state: 'excited', msg: 'mascot.newMessage' },
   newNotice: { state: 'curious', msg: 'mascot.newNotice' },
 };

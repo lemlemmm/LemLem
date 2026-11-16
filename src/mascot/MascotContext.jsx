@@ -95,17 +95,23 @@ export function MascotProvider({ children }) {
   const quiet = QUIET.test(pathname);
   const firstName = (profile?.full_name || '').split(' ')[0];
 
-  // Greet once per browser session (never on quiet pages)
+   // Greet once per browser session (never on quiet pages). After 7+ days away: "welcome back"
   useEffect(() => {
     if (!userId || !enabled || quiet) return undefined;
     if (sessionStorage.getItem('mascotGreeted') === userId) return undefined;
     const id = setTimeout(() => {
       sessionStorage.setItem('mascotGreeted', userId);
-      react('greet', { name: firstName });
+      let away = false;
+      try {
+        const last = Number(localStorage.getItem(`lastVisit:${userId}`) || 0);
+        away = last > 0 && Date.now() - last > 7 * 24 * 60 * 60 * 1000;
+        localStorage.setItem(`lastVisit:${userId}`, String(Date.now()));
+      } catch (_) { /* storage unavailable */ }
+      react(away ? 'welcomeBack' : 'greet', { name: firstName });
     }, 1200);
     return () => clearTimeout(id);
   }, [userId, enabled, quiet, react, firstName]);
-
+  
   return (
     <MascotContext.Provider
       value={{

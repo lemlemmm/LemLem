@@ -3,6 +3,15 @@ import { supabase } from '../lib/supabase';
 import { useAuth } from '../lib/AuthContext';
 import { useMascot } from '../mascot/MascotContext';
 
+const REACTION_FOR = {
+  message_new: 'newMessage',
+  materials_new: 'newMaterials',
+  material_new: 'newMaterials',
+  selfstudy_new: 'newMaterials',
+  homework_new: 'newHomework',
+  test_new: 'newHomework',
+};
+
 const NotifyContext = createContext(null);
 
 export function NotifyProvider({ children }) {
@@ -44,8 +53,7 @@ export function NotifyProvider({ children }) {
           refresh();
           // The mascot never interrupts homework or tests
           if (!quietRef.current) {
-            reactRef.current(payload.new?.type === 'message_new' ? 'newMessage' : 'newNotice');
-          }
+            reactRef.current(REACTION_FOR[payload.new?.type] || 'newNotice');          }
         }
       )
       .on('postgres_changes', { event: '*', schema: 'public', table: 'messages' }, () => refresh())

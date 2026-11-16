@@ -1,9 +1,10 @@
 // Menu items. Keys match translations: nav.<key>
 export const teacherNav = [
   'dashboard', 'groups', 'students', 'schedule', 'lessons', 'attendance',
-  'payments', 'homework', 'tests', 'materials', 'messages', 'settings',
+  'payments', 'homework', 'tests', 'progress', 'materials', 'messages', 'settings',
 ];
 
 export const studentNav = [
-  'dashboard', 'schedule', 'lessons', 'homework', 'tests', 'messages', 'payments', 'settings',
+  'dashboard', 'schedule', 'lessons', 'selfstudy', 'materials', 'homework', 'tests',
+  'progress', 'messages', 'payments', 'settings',
 ];
